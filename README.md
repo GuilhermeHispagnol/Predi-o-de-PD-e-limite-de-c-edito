@@ -3,9 +3,9 @@
 ## Overview
 
 This project presents an end-to-end credit risk modeling pipeline developed in **R**.
-The objective is to estimate the **Probability of Default (PD)** for loan applicants and use this information to support **credit approval and credit limit decisions**.
+The objective is to estimate the **Probability of Default (PD)** for loan applicants and use this information to support **credit approval decisions and credit limit assignment**.
 
-The project includes exploratory data analysis, predictive modeling, model evaluation, probability calibration, and a simple framework for **risk-based lending decisions**.
+The project includes exploratory data analysis, predictive modeling, model evaluation, probability calibration, and a framework for **risk-based lending strategies**.
 
 ---
 
@@ -17,6 +17,54 @@ The project includes exploratory data analysis, predictive modeling, model evalu
 * **Brier Score:** 0.17
 
 These metrics indicate the model’s ability to discriminate between default and non-default borrowers and the calibration quality of predicted probabilities.
+
+---
+
+## Business Impact
+
+The predicted **Probability of Default (PD)** is used to support lending decisions and evaluate the financial performance of different credit strategies.
+
+The analysis compares the current lending policy with a strategy based on **risk-adjusted credit limits and approval rules derived from the PD model**.
+
+### Portfolio Results
+
+| Strategy                             | Expected Profit |
+| ------------------------------------ | --------------- |
+| Current policy                       | 8,863,944       |
+| Optimized credit limits              | 37,019,335      |
+| Optimized policy with rejection rule | 37,028,362      |
+
+The optimized strategy increases portfolio profitability by **more than four times compared to the current policy**, illustrating the potential value of integrating machine learning models into credit decision processes.
+
+### Risk and Business Metrics
+
+* **Expected Return on Assets (ROA):** 0.448
+* **Expected Loss Rate:** 0.143
+* **Approval Rate:** 0.995
+
+These metrics illustrate how the PD model can be integrated with **credit limit optimization and approval policies** to balance profitability and credit risk in a lending portfolio.
+
+---
+
+## Credit Risk Framework
+
+Credit risk in lending portfolios is commonly evaluated using the **Expected Loss (EL)** framework:
+
+**EL = PD × LGD × EAD**
+
+Where:
+
+* **PD (Probability of Default):** probability that a borrower defaults on the loan
+* **LGD (Loss Given Default):** proportion of the exposure that is lost if a default occurs
+* **EAD (Exposure at Default):** total exposure at the time of default
+
+In this project:
+
+* **PD** is estimated using a **Random Forest model**
+* **EAD** corresponds to the granted credit exposure (loan amount or credit limit)
+* **Expected Loss (EL)** is computed for each borrower to evaluate portfolio risk and expected financial impact
+
+This framework links the **machine learning model** to financial risk metrics used in credit risk management.
 
 ---
 
